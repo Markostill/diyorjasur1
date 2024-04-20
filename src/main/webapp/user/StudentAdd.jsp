@@ -65,7 +65,7 @@
 </div>
 <!-- Add Region form -->
 <div class="form-container">
-    <form action="${pageContext.request.contextPath}/UserAdd" method="get">
+    <form action="${pageContext.request.contextPath}/userAdd" method="get">
         <label for="lastname">LastName:</label><br>
         <input type="text" id="lastname" name="lastName" required><br><br>
         <label for="firstname">FirstName:</label><br>
@@ -77,7 +77,8 @@
         <label for="groupId"></label>
         <select name="groupId" id="groupId">
             <option value="" selected disabled> Group</option>
-            <% for (Group category : GroupRepo.findAll()) { %>
+            <% GroupRepo groupRepo = new GroupRepo();
+                for (Group category : groupRepo.findAll()) { %>
             <option value="<%=category.getId()%>">
                 <%= category.getName() %>
             </option>

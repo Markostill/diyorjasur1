@@ -68,7 +68,8 @@
 </div>
 <!-- Add Region form -->
 <%
-    List<User> students = UserRepo.findAll();
+    UserRepo userRepo = new UserRepo();
+    List<User> students = userRepo.findAll();
     Integer id = Integer.valueOf(request.getParameter("id"));
     for (User student : students) {
         if(id.equals(student.getId())){
@@ -87,7 +88,8 @@
         <label for="groupId"></label>
         <select name="groupId" id="groupId">
             <option value="" selected disabled> Group</option>
-            <% for (Group category : GroupRepo.findAll()) { %>
+            <% GroupRepo groupRepo = new GroupRepo();
+                for (Group category : groupRepo.findAll()) { %>
             <option value="<%=category.getId()%>">
                 <%= category.getName() %>
             </option>

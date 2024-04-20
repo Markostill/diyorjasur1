@@ -8,14 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.project_1.entity.Group;
 import org.example.project_1.entity.User;
 import org.example.project_1.repo.BaseRepo;
+import org.example.project_1.repo.UserRepo;
 
 import java.io.IOException;
 
 @WebServlet(name = "userEdit",value = "/userEdit")
 public class UserEditServlet extends HttpServlet {
-    private static final BaseRepo<User,Integer> userRepo = new BaseRepo<>();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserRepo userRepo = new UserRepo();
         Integer id = Integer.parseInt(req.getParameter("id"));
         String lastName = req.getParameter("lastName");
         String firstName = req.getParameter("firstName");
